@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MY  PORTFOLIO ✧･ﾟ:*</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Y2K K-pop Inspired Theme */
+        :root {
+            --pink: #ff9cee;
+            --blue: #7ec4ff;
+            --yellow: #fff76a;
+            --purple: #d18bff;
+            --black: #1a0033;
+            --white: #fff9fd;
+            --neon-pink: #ff2ed4;
+            --neon-blue: #00f7ff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial Rounded MT Bold', 'Comic Sans MS', 'Verdana', sans-serif;
+        }
+        
+        body {
+            background-color: var(--black);
+            color: var(--white);
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(255, 156, 238, 0.15) 0%, transparent 25%),
+                radial-gradient(circle at 90% 30%, rgba(126, 196, 255, 0.15) 0%, transparent 25%),
+                radial-gradient(circle at 50% 80%, rgba(255, 247, 106, 0.15) 0%, transparent 25%);
+            overflow-x: hidden;
+            background-attachment: fixed;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        /* Y2K Glitter Border Effect */
+        .glitter-border {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            background-image: 
+                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle cx="50" cy="50" r="1" fill="white" opacity="0.7"/></svg>'),
+                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle cx="50" cy="50" r="1" fill="%23ff9cee" opacity="0.7"/></svg>'),
+                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle cx="50" cy="50" r="1" fill="%237ec4ff" opacity="0.7"/></svg>');
+            background-size: 20px 20px;
+            opacity: 0.3;
+        }
+        
+        header {
+            text-align: center;
+            padding: 40px 0;
+            position: relative;
+            margin-bottom: 30px;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 300px;
+            height: 150px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 150"><path d="M30,75 Q150,0 270,75 Q150,150 30,75" fill="none" stroke="%23ff9cee" stroke-width="6" stroke-dasharray="10,5"/><path d="M30,75 Q150,25 270,75 Q150,125 30,75" fill="none" stroke="%237ec4ff" stroke-width="6" stroke-dasharray="5,5"/></svg>');
+            background-repeat: no-repeat;
+            background-position: center;
+            opacity: 0.7;
+        }
+        
+        header h1 {
+            font-size: 4rem;
+            margin-bottom: 15px;
+            background: linear-gradient(45deg, var(--neon-pink), var(--neon-blue), var(--yellow));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 10px rgba(255, 46, 212, 0.5);
+            letter-spacing: 3px;
+            font-weight: 900;
+            text-transform: uppercase;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes glow {
+            from { text-shadow: 0 0 10px rgba(255, 46, 212, 0.5), 0 0 20px rgba(126, 196, 255, 0.5); }
+            to { text-shadow: 0 0 15px rgba(255, 46, 212, 0.8), 0 0 25px rgba(126, 196, 255, 0.8), 0 0 35px rgba(255, 247, 106, 0.6); }
+        }
+        
+        header p {
+            font-size: 1.5rem;
+            color: var(--white);
+            max-width: 700px;
+            margin: 0 auto;
+            font-weight: bold;
+            background: linear-gradient(to right, var(--pink), var(--blue));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        /* Portfolio Slider - Y2K Style */
+        .portfolio-slider {
+            position: relative;
+            margin: 60px auto;
+            overflow: hidden;
+            border-radius: 30px;
+            box-shadow: 
+                0 0 20px rgba(255, 156, 238, 0.5),
+                0 0 40px rgba(126, 196, 255, 0.3),
+                0 0 60px rgba(255, 247, 106, 0.2);
+            border: 6px double var(--purple);
+            background: rgba(26, 0, 51, 0.7);
+            backdrop-filter: blur(5px);
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+        
+        .slider-container {
+            display: flex;
+            transition: transform 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .slide {
+            min-width: 100%;
+            padding: 0;
+            transform-origin: center center;
+        }
+        
+        .slide-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-bottom: 6px dotted var(--purple);
+            filter: saturate(1.2) contrast(1.1);
+        }
+        
+        .slide-content {
+            padding: 30px;
+            background: linear-gradient(to bottom, rgba(209, 139, 255, 0.1), rgba(26, 0, 51, 0.7));
+        }
+        
+        .slide h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            color: var(--white);
+            text-shadow: 0 0 10px var(--neon-pink);
+            letter-spacing: 1px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .slide h2::after {
+            content: "";
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(to right, var(--neon-pink), var(--neon-blue));
+            border-radius: 3px;
+        }
+        
+        .slide p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            line-height: 1.7;
+            color: rgba(255, 249, 253, 0.9);
+        }
+        
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 30px;
+        }
+        
+        .tech-item {
+            background: rgba(255, 249, 253, 0.1);
+            color: var(--white);
+            padding: 8px 18px;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: bold;
+            border: 2px solid var(--purple);
+            box-shadow: 0 0 10px rgba(209, 139, 255, 0.3);
+            backdrop-filter: blur(2px);
+            transition: all 0.3s ease;
+        }
+        
+        .tech-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 15px rgba(209, 139, 255, 0.5);
+            background: rgba(255, 249, 253, 0.2);
+        }
+        
+        .button-group {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 14px 35px;
+            color: var(--white);
+            min-width: 140px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.1rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transform: translateY(0);
+            position: relative;
+            overflow: hidden;
+            border: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .btn::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to bottom right,
+                rgba(255,255,255,0) 45%,
+                rgba(255,255,255,0.8) 50%,
+                rgba(255,255,255,0) 55%
+            );
+            transform: rotate(30deg);
+            transition: all 0.7s ease;
+            opacity: 0;
+        }
+        
+        .btn:hover {
+            transform: translateY(-5px) rotate(2deg);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+        
+        .btn:hover::before {
+            left: 100%;
+            opacity: 1;
+        }
+        
+        .btn-github {
+            background: linear-gradient(45deg, var(--neon-pink), var(--purple));
+        }
+        
+        .btn-github:hover {
+            background: linear-gradient(45deg, var(--purple), var(--neon-pink));
+        }
+        
+        .btn-demo {
+            background: linear-gradient(45deg, var(--neon-blue), var(--blue));
+        }
+        
+        .btn-demo:hover {
+            background: linear-gradient(45deg, var(--blue), var(--neon-blue));
+        }
+        
+        /* Slider Navigation - Y2K Style */
+        .slider-nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+            gap: 20px;
+        }
+        
+        .slider-dot {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 2px solid var(--white);
+            box-shadow: 0 0 10px rgba(255, 249, 253, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .slider-dot::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--purple);
+            opacity: 0.5;
+        }
+        
+        .slider-dot.active {
+            transform: scale(1.5);
+            box-shadow: 0 0 15px var(--neon-pink);
+        }
+        
+        .slider-dot.active::before {
+            background: linear-gradient(45deg, var(--neon-pink), var(--neon-blue));
+            opacity: 1;
+        }
+        
+        .prev-btn, .next-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            box-shadow: 0 0 20px rgba(126, 196, 255, 0.5);
+            border: 3px solid var(--white);
+            color: var(--white);
+            font-size: 1.5rem;
+            font-weight: bold;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            background: rgba(209, 139, 255, 0.3);
+            text-shadow: 0 0 10px var(--neon-pink);
+        }
+        
+        .prev-btn:hover, .next-btn:hover {
+            background: linear-gradient(45deg, var(--neon-pink), var(--neon-blue));
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 0 30px rgba(255, 46, 212, 0.7);
+            border-color: transparent;
+        }
+        
+        .prev-btn {
+            left: 30px;
+        }
+        
+        .next-btn {
+            right: 30px;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            margin-top: 80px;
+            color: var(--white);
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-top: 3px dotted var(--purple);
+            position: relative;
+        }
+        
+        footer::before {
+            content: "✧･ﾟ:* KPOP POWERPUFF MAGIC *:･ﾟ✧";
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--black);
+            padding: 0 20px;
+            color: var(--pink);
+            font-size: 1rem;
+            text-shadow: 0 0 5px var(--neon-blue);
+        }
+        
+        /* Y2K Powerpuff Elements */
+        .y2k-decoration {
+            position: fixed;
+            font-size: 2.5rem;
+            z-index: -1;
+            animation: float 6s infinite ease-in-out;
+            text-shadow: 0 0 10px currentColor;
+            opacity: 0.7;
+            filter: drop-shadow(0 0 5px currentColor);
+        }
+        
+        /* STAR STYLES - Enhanced for Y2K */
+        .star {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: white;
+            border-radius: 50%;
+            opacity: 0.8;
+            animation: twinkle 3s infinite ease-in-out;
+            filter: drop-shadow(0 0 3px white);
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.8; transform: scale(1); }
+            50% { opacity: 0.3; transform: scale(2); filter: drop-shadow(0 0 6px white); }
+        }
+
+        .floating-image {
+            position: absolute;
+            width: 150px;
+            pointer-events: none;
+            z-index: 10;
+            animation: float 6s infinite ease-in-out;
+            filter: drop-shadow(0 0 15px rgba(255, 46, 212, 0.7));
+        }
+
+        .sparkle {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background: radial-gradient(circle, white 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: sparkle 1.2s linear forwards;
+            z-index: 5;
+            filter: drop-shadow(0 0 5px white);
+        }
+
+        @keyframes sparkle {
+            0% {
+                transform: scale(0.3) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(3) rotate(180deg);
+                opacity: 0;
+            }
+        }
+        
+        /* Y2K Background Shapes */
+        .y2k-shape {
+            position: fixed;
+            z-index: -2;
+            opacity: 0.1;
+            animation: float 15s infinite linear;
+        }
+        
+        .shape-1 {
+            top: 10%;
+            left: 5%;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, var(--neon-pink), transparent 70%);
+            border-radius: 50%;
+            animation-delay: 0s;
+        }
+        
+        .shape-2 {
+            bottom: 15%;
+            right: 8%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, var(--neon-blue), transparent 70%);
+            border-radius: 50%;
+            animation-delay: 3s;
+        }
+        
+        .shape-3 {
+            top: 60%;
+            left: 10%;
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, var(--yellow), transparent 70%);
+            border-radius: 50%;
+            animation-delay: 6s;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5rem;
+            }
+            
+            header p {
+                font-size: 1.1rem;
+            }
+            
+            .slide-image {
+                height: 250px;
+            }
+            
+            .prev-btn, .next-btn {
+                width: 45px;
+                height: 45px;
+                font-size: 1.2rem;
+            }
+            
+            .btn {
+                padding: 12px 25px;
+                font-size: 1rem;
+            }
+            
+            .floating-image {
+                width: 100px;
+            }
+            
+            .slide h2 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Y2K Background Elements -->
+    <div class="glitter-border"></div>
+    <div class="y2k-shape shape-1"></div>
+    <div class="y2k-shape shape-2"></div>
+    <div class="y2k-shape shape-3"></div>
+    
+    <!-- Floating Powerpuff character -->
+    <img src="powerpuff-removebg-preview.png" id="flyer" class="floating-image" />
+
+    <!-- Y2K K-pop Decorations -->
+    <div class="y2k-decoration" style="top:10%;left:5%;color:var(--neon-pink);">♡✧･ﾟ:* CODEFOLIO *:･ﾟ✧♡</div>
+    <div class="y2k-decoration" style="top:30%;right:8%;color:var(--neon-blue);">(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧</div>
+    <div class="y2k-decoration" style="bottom:15%;left:10%;color:var(--yellow);">✧･ﾟ:* ERROR 101!!!! *:･ﾟ✧</div>
+    <div class="y2k-decoration" style="bottom:25%;right:12%;color:var(--purple);">♡(>ᴗ•)♡</div>
+    
+    <div class="container">
+        <header>
+            <h1>MY PORTFOLIO</h1>
+            <p>Bubblegum Pop meets Coding! Building fabulous projects with Powered Up energy!</p>
+        </header>
+        
+        <div class="portfolio-slider">
+            <button class="prev-btn">◀</button>
+            <button class="next-btn">▶</button>
+            
+            <div class="slider-container">
+                <!-- Slide 1: Double Tennis Game -->
+                <div class="slide">
+                    <img src="dubten.jpg" alt="Tennis Game" class="slide-image">
+                    <div class="slide-content">
+                        <h2>DOUBLE TENNIS GAME</h2>
+                        <p>Just like Blossom strategizing against Mojo Jojo, this Python tennis game uses multi-agent AI to create smart opponents! Watch them volley with the power of chemical X!</p>
+                        
+                        <div class="tech-stack">
+                            <span class="tech-item">Python</span>
+                            <span class="tech-item">Pygame</span>
+                            <span class="tech-item">Multi-agent AI</span>
+                            <span class="tech-item">Powerpuff Power</span>
+                        </div>
+                        
+                        <div class="button-group">
+                            <a href="https://github.com/Swarrrrovski/Double-Tennis-using-Multi-Agent.git" class="btn btn-github">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                            <a href="https://www.linkedin.com/posts/swarnali-chatterjee-052092225_so-we-had-to-work-on-the-doubles-tennis-problem-activity-7315715964858179584-22jN?utm_source=share&utm_medium=member_desktop&rcm=ACoAADhuNr4BRAsweursYMSy12lz17bLJA5Bny4" class="btn btn-demo">
+                                <i class="fas fa-gamepad"></i> Play Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Slide 2: Unity Truck Delivery Game -->
+                <div class="slide">
+                    <img src="truck.jpg" alt="Truck Game" class="slide-image">
+                    <div class="slide-content">
+                        <h2>TRUCK DELIVERY ADVENTURE</h2>
+                        <p>Channel your inner Buttercup with this tough delivery game! Save Townsville, managing routes and upgrades along the way!</p>
+                        
+                        <div class="tech-stack">
+                            <span class="tech-item">Unity</span>
+                            <span class="tech-item">C#</span>
+                            <span class="tech-item">2D Game Design</span>
+                            <span class="tech-item">Buttercup Toughness</span>
+                        </div>
+                        
+                        <div class="button-group">
+                            <a href="https://github.com/Swarrrrovski/Basic-Truck-Delivery-Game.git" class="btn btn-github">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                            <a href="https://www.linkedin.com/posts/swarnali-chatterjee-052092225_basic-truck-delivery-game-in-unity-2d-using-activity-7315750431115157506-55p4?utm_source=share&utm_medium=member_desktop&rcm=ACoAADhuNr4BRAsweursYMSy12lz17bLJA5Bny4" class="btn btn-demo">
+                                <i class="fas fa-gamepad"></i> Play Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Slide 3: Image Segmentation -->
+                <div class="slide">
+                    <img src="seg.jpg" alt="Image Processing" class="slide-image">
+                    <div class="slide-content">
+                        <h2>IMAGE SEGMENTATION MAGIC</h2>
+                        <p>Using Particle Swarm Optimization like Bubbles uses bubbles! This cloud-powered image processor can analyze pictures faster than the Powerpuffs can defeat a monster!</p>
+                        
+                        <div class="tech-stack">
+                            <span class="tech-item">Python</span>
+                            <span class="tech-item">PSO Algorithm</span>
+                            <span class="tech-item">Google Cloud</span>
+                            <span class="tech-item">Bubbles' Brainpower</span>
+                        </div>
+                        <div class="button-group">
+                          <a href="https://github.com/Swarrrrovski/Image-Segmentation-using-Particle-Swarm-Optimization.git" class="btn btn-github">
+                        <i class="fab fa-github"></i> GitHub
+                    </a>
+                            <a href="https://www.linkedin.com/posts/swarnali-chatterjee-052092225_image-segmentation-using-particle-swarm-optimization-activity-7313276403108433921-uBGM?utm_source=share&utm_medium=member_desktop&rcm=ACoAADhuNr4BRAsweursYMSy12lz17bLJA5Bny4" class="btn btn-demo">
+                                <i class="fas fa-cloud"></i> Cloud Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Slide 4: E-Library Management -->
+                <div class="slide">
+                    <img src="libra.jpg" alt="Library System" class="slide-image">
+                    <div class="slide-content">
+                        <h2>E-LIBRARY SYSTEM</h2>
+                        <p>Just like Professor Utonium's lab notes, this system keeps everything organized! Track books and members with the efficiency of the Powerpuff Girls' crime-fighting!</p>
+                        
+                        <div class="tech-stack">
+                            <span class="tech-item">HTML/CSS/JS</span>
+                            <span class="tech-item">PHP</span>
+                            <span class="tech-item">MySQL</span>
+                            <span class="tech-item">XAMPP</span>
+                            <span class="tech-item">Powerpuff Precision</span>
+                        </div>
+                        
+                        <div class="button-group">
+                            <a href="https://github.com/Swarrrrovski/Frontend-and-BackEnd-of-a-E-Library.git"class="btn btn-github">
+                               <i class="fab fa-github"></i> GitHub
+                            </a>
+                            <a href="https://www.linkedin.com/posts/swarnali-chatterjee-052092225_web-dev-project-e-library-frontendhtml-activity-7315745989586272257-WZUW?utm_source=share&utm_medium=member_desktop&rcm=ACoAADhuNr4BRAsweursYMSy12lz17bLJA5Bny4" class="btn btn-demo">
+                                <i class="fas fa-laptop"></i> Web Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="slider-nav">
+                <div class="slider-dot active"></div>
+                <div class="slider-dot"></div>
+                <div class="slider-dot"></div>
+                <div class="slider-dot"></div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <p>© 2025 MY PORTFOLIO | CREATED WITH CHEMICAL C!</p>
+    </footer>
+    
+    <script>
+        // JavaScript with Y2K KPOP flair!
+        document.addEventListener('DOMContentLoaded', function() {
+            const slider = document.querySelector('.slider-container');
+            const slides = document.querySelectorAll('.slide');
+            const dots = document.querySelectorAll('.slider-dot');
+            const prevBtn = document.querySelector('.prev-btn');
+            const nextBtn = document.querySelector('.next-btn');
+            
+            let currentSlide = 0;
+            const slideCount = slides.length;
+            
+            // KPOP sound effects
+            const clickSound = new Audio('https://www.myinstants.com/media/sounds/twice-tt.mp3');
+            const transitionSound = new Audio('https://www.myinstants.com/media/sounds/kpop-cheer.mp3');
+            
+            function updateSlider() {
+                slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+                
+                // Add KPOP slide transition effect
+                slides.forEach((slide, index) => {
+                    if (index === currentSlide) {
+                        slide.style.animation = 'none';
+                        void slide.offsetWidth; // Trigger reflow
+                        slide.style.animation = 'slideIn 0.7s ease-out';
+                    }
+                });
+                
+                // Update dots with animation
+                dots.forEach((dot, index) => {
+                    if (index === currentSlide) {
+                        dot.classList.add('active');
+                        dot.style.animation = 'none';
+                        void dot.offsetWidth; // Trigger reflow
+                        dot.style.animation = 'pulse 0.5s';
+                    } else {
+                        dot.classList.remove('active');
+                    }
+                });
+                
+                // Play transition sound
+                transitionSound.currentTime = 0;
+                transitionSound.play();
+                
+                // Add confetti effect
+                if (Math.random() > 0.5) {
+                    createConfetti();
+                }
+            }
+            
+            function nextSlide() {
+                currentSlide = (currentSlide + 1) % slideCount;
+                updateSlider();
+            }
+            
+            function prevSlide() {
+                currentSlide = (currentSlide - 1 + slideCount) % slideCount;
+                updateSlider();
+            }
+            
+            // Button events with sound
+            nextBtn.addEventListener('click', () => {
+                clickSound.currentTime = 0;
+                clickSound.play();
+                nextSlide();
+            });
+            
+            prevBtn.addEventListener('click', () => {
+                clickSound.currentTime = 0;
+                clickSound.play();
+                prevSlide();
+            });
+            
+            // Dot navigation
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    clickSound.currentTime = 0;
+                    clickSound.play();
+                    currentSlide = index;
+                    updateSlider();
+                });
+            });
+            
+            // Keyboard navigation
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowRight') nextSlide();
+                if (e.key === 'ArrowLeft') prevSlide();
+            });
+            
+            // Auto-advance with KPOP energy
+            let slideInterval = setInterval(() => {
+                nextSlide();
+            }, 8000);
+            
+            // Pause on hover
+            slider.parentElement.addEventListener('mouseenter', () => {
+                clearInterval(slideInterval);
+            });
+            
+            slider.parentElement.addEventListener('mouseleave', () => {
+                slideInterval = setInterval(() => {
+                    nextSlide();
+                }, 8000);
+            });
+            
+            // Add some KPOP effects to buttons
+            document.querySelectorAll('.btn').forEach(btn => {
+                btn.addEventListener('mouseenter', () => {
+                    btn.style.transform = `translateY(-5px) rotate(${Math.random() * 10 - 5}deg)`;
+                    createSparkleAtButton(btn);
+                });
+                btn.addEventListener('mouseleave', () => {
+                    btn.style.transform = 'translateY(0) rotate(0deg)';
+                });
+            });
+            
+            // Floating image with sparkles - Enhanced for Y2K
+            const flyer = document.getElementById('flyer');
+            let x = window.innerWidth / 2;
+            let y = window.innerHeight / 2;
+            let dx = 3;
+            let dy = 2;
+
+            // Create background stars - More sparkly for Y2K
+            const numStars = 150;
+            for (let i = 0; i < numStars; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
+                star.style.left = `${Math.random() * window.innerWidth}px`;
+                star.style.top = `${Math.random() * window.innerHeight}px`;
+                star.style.animationDelay = `${Math.random() * 3}s`;
+                star.style.width = `${2 + Math.random() * 3}px`;
+                star.style.height = star.style.width;
+                // Random color stars
+                if (Math.random() > 0.7) {
+                    star.style.background = `hsl(${Math.random() * 360}, 100%, 70%)`;
+                }
+                document.body.appendChild(star);
+            }
+
+            function createSparkle(x, y) {
+                const sparkle = document.createElement('div');
+                sparkle.classList.add('sparkle');
+                sparkle.style.left = `${x}px`;
+                sparkle.style.top = `${y}px`;
+                // Random colored sparkles
+                if (Math.random() > 0.5) {
+                    sparkle.style.background = `radial-gradient(circle, hsl(${Math.random() * 360}, 100%, 70%) 0%, transparent 70%)`;
+                }
+                document.body.appendChild(sparkle);
+
+                setTimeout(() => {
+                    sparkle.remove();
+                }, 1200);
+            }
+            
+            function createSparkleAtButton(btn) {
+                const rect = btn.getBoundingClientRect();
+                for (let i = 0; i < 5; i++) {
+                    setTimeout(() => {
+                        createSparkle(
+                            rect.left + Math.random() * rect.width,
+                            rect.top + Math.random() * rect.height
+                        );
+                    }, i * 100);
+                }
+            }
+            
+            function createConfetti() {
+                for (let i = 0; i < 30; i++) {
+                    setTimeout(() => {
+                        const confetti = document.createElement('div');
+                        confetti.classList.add('sparkle');
+                        confetti.style.left = `${50 + Math.random() * 20}%`;
+                        confetti.style.top = `-20px`;
+                        confetti.style.background = `radial-gradient(circle, hsl(${Math.random() * 360}, 100%, 70%) 0%, transparent 70%)`;
+                        confetti.style.width = `${10 + Math.random() * 10}px`;
+                        confetti.style.height = confetti.style.width;
+                        confetti.style.animation = `confettiFall ${2 + Math.random() * 3}s linear forwards`;
+                        document.body.appendChild(confetti);
+                        
+                        setTimeout(() => {
+                            confetti.remove();
+                        }, 5000);
+                    }, i * 100);
+                }
+            }
+
+            function animate() {
+                x += dx;
+                y += dy;
+
+                // Bounce off the edges
+                if (x <= 0 || x >= window.innerWidth - 150) dx = -dx * (0.9 + Math.random() * 0.2);
+                if (y <= 0 || y >= window.innerHeight - 150) dy = -dy * (0.9 + Math.random() * 0.2);
+
+                flyer.style.left = `${x}px`;
+                flyer.style.top = `${y}px`;
+
+                // Add sparkles as it moves
+                if (Math.random() > 0.8) {
+                    createSparkle(x + 75, y + 75);
+                }
+
+                requestAnimationFrame(animate);
+            }
+
+            animate();
+            
+            // Make sure floating image stays visible when scrolling
+            window.addEventListener('scroll', function() {
+                flyer.style.top = `${y + window.scrollY}px`;
+            });
+            
+            // Add CSS for confetti fall
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes confettiFall {
+                    0% {
+                        transform: translateY(0) rotate(0deg);
+                        opacity: 1;
+                    }
+                    100% {
+                        transform: translateY(100vh) rotate(360deg);
+                        opacity: 0;
+                    }
+                }
+                @keyframes slideIn {
+                    0% {
+                        transform: scale(0.9)`
+                        
+        setTimeout(() => {
+            createConfetti();
+            transitionSound.play();
+        }, 1000);
+    });
+</script>
